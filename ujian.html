@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ujian - Sistem Ujian Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-white shadow w-72 p-4 hidden md:block">
+      <h3 class="font-bold text-lg mb-2">Navigasi Soal</h3>
+      <div id="petaSoal" class="grid grid-cols-4 gap-2"></div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-6">
+      <div class="bg-white rounded-2xl shadow p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <div class="text-sm text-gray-500">Peserta</div>
+            <div id="namaPeserta" class="font-bold text-lg">Memuat...</div>
+            <div id="noPesertaDisplay" class="text-sm text-gray-500">Loading...</div>
+          </div>
+          <div>
+            <div class="text-sm text-gray-500">Sisa Waktu</div>
+            <div id="timer" class="font-bold text-xl">--:--:--</div>
+          </div>
+        </div>
+
+        <div class="border-t pt-4">
+          <div id="kontenSoal" class="mb-6"></div>
+          <div id="pilihanContainer" class="space-y-3"></div>
+        </div>
+
+        <div class="flex justify-center gap-3 mt-6">
+          <button id="btnPrev" class="px-4 py-2 rounded bg-gray-400 text-white" disabled>Sebelumnya</button>
+          <button id="btnNext" class="px-4 py-2 rounded bg-blue-600 text-white">Berikutnya</button>
+          <button id="btnSubmit" class="px-4 py-2 rounded bg-green-600 text-white hidden">Selesai Ujian</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalSubmit" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-xl max-w-md w-full">
+      <h3 class="font-bold mb-3">Konfirmasi Submit Ujian</h3>
+      <p>Anda telah menjawab <span id="terjawab">0</span> dari <span id="totalSoalModal">0</span> soal.</p>
+      <div class="flex gap-3 mt-4">
+        <button id="btnBatal" class="flex-1 py-2 rounded bg-gray-200">Batal</button>
+        <button id="btnKonfirmasi" class="flex-1 py-2 rounded bg-green-600 text-white">Ya, Selesai</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    // init exam page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.app && typeof app.initExam === 'function') app.initExam();
+    });
+  </script>
+</body>
+</html>
