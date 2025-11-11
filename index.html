@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Sistem Ujian Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://w7.pngwing.com/pngs/184/833/png-transparent-exam-test-checklist-online-learning-education-online-document-online-learning-icon.png" />
+</head>
+<body class="animated-bg min-h-screen flex items-center justify-center p-4 relative">
+  <!-- Floating shapes (keperluan UI) -->
+  <div class="shape shape-1" style="position:absolute"></div>
+
+  <div class="w-full max-w-md relative z-10">
+    <div class="bg-white/95 rounded-3xl p-8 shadow-2xl">
+      <div class="text-center mb-6">
+        <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-1">UJIAN PSIKOTEST</h2>
+        <p class="text-gray-600 text-sm">Sistem Ujian Online</p>
+      </div>
+
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label class="sr-only">Nomor Peserta</label>
+          <input id="noPeserta" type="text" required placeholder="Nomor Peserta" class="w-full pl-4 py-3 border rounded-xl" />
+        </div>
+        <div>
+          <label class="sr-only">Password</label>
+          <input id="password" type="password" required placeholder="Password" class="w-full pl-4 py-3 border rounded-xl" />
+        </div>
+        <div>
+          <label class="sr-only">PIN Sesi</label>
+          <input id="pinSesi" type="text" required placeholder="PIN Sesi" class="w-full pl-4 py-3 border rounded-xl" />
+        </div>
+
+        <div id="errorMsg" class="hidden bg-red-500 text-white p-3 rounded-xl text-sm text-center"></div>
+
+        <button id="btnLogin" type="submit" class="w-full py-3 rounded-xl text-white font-bold bg-gradient-to-r from-purple-600 to-pink-500">
+          MULAI UJIAN
+        </button>
+      </form>
+    </div>
+
+    <div class="text-center mt-6 text-gray-600 text-sm">
+      © <span id="year"></span> Pemerintah Kota
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // init login page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.app && typeof app.initLogin === 'function') app.initLogin();
+    });
+  </script>
+</body>
+</html>
